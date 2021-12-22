@@ -1,0 +1,132 @@
+.auth__main {
+    align-items: center;
+    background: $background;
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    height: 100vh;
+    width: 100vw;
+}
+
+.auth__box-container {
+    background: white;
+    box-shadow: 0px 3px silver;
+    border-radius: 20px;
+    padding: 30px;
+    width: 350px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.auth__arrow {
+    color: rgb(158, 156, 156);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(240, 239, 239);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 40px;
+    margin-top: 60px;
+}
+
+.auth__link {
+    text-decoration: none;
+}
+
+.auth__title {
+    margin-bottom: 30px;
+
+    & h1 {
+        color: black;
+        font-weight: 700;
+        font-size: 25px;
+        font-weight: 600;
+    }
+}
+
+.auth__title span {
+    font-size: 14px;
+    color: silver;
+    margin-bottom: 30px;
+}
+
+.auth__screen label {
+    color: silver;
+    font-size: 12px;
+}
+
+.auth__screen p {
+    color: silver;
+    font-size: 14px;
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.auth__input {
+    border: 0;
+    border-bottom: 1px solid silver;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    height: 20px;
+    width: 100%;
+    font-size: 18px;
+
+    transition: border-bottom .3s ease;
+
+    &:focus {
+        outline: none;
+        border-bottom: 1px solid gray;
+    }
+}
+
+.auth__link {
+    color: grey;
+    font-size: 14px;
+}
+
+
+.auth__alert-error {
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.auth__social-networks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.auth__network-icons {
+    display: flex;
+}
+
+.auth__icon-wrapper {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: silver;
+    border: 1px solid silver;
+    border-radius: 50%;
+    margin: 5px;
+    margin-top: 15px;
+}
+
+.auth__terms {
+    font-weight: 200;
+}
