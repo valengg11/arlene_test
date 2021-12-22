@@ -10,7 +10,7 @@ export const LoginScreen = () => {
         </div>
       </Link>
       <div className="auth__title">
-        <h1 className="mb-1">Log in</h1>
+        <h1 className="mb-1 title">Log in</h1>
         <span>Welcome back!</span>
       </div>
       <form>

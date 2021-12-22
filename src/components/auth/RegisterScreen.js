@@ -10,7 +10,7 @@ export const RegisterScreen = () => {
         </div>
       </Link>
       <div className="auth__title">
-        <h1 className="mb-1">Create an account</h1>
+        <h1 className="mb-1 title">Create an account</h1>
         <span>Just one step to get started.</span>
       </div>
       <form>

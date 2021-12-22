@@ -39,28 +39,21 @@
 
 .auth__title {
     margin-bottom: 30px;
-
-    & h1 {
-        color: black;
-        font-weight: 700;
-        font-size: 25px;
-        font-weight: 600;
-    }
 }
 
 .auth__title span {
     font-size: 14px;
-    color: silver;
+    color: gray;
     margin-bottom: 30px;
 }
 
 .auth__screen label {
-    color: silver;
+    color: gray;
     font-size: 12px;
 }
 
 .auth__screen p {
-    color: silver;
+    color: gray;
     font-size: 14px;
     text-align: center;
     width: 60%;

@@ -17,3 +17,9 @@
         background-color: lighten($color: $blue, $amount: 20);
     }
 }
+
+.btn-secondary {
+    background-color: $light_blue;
+    color: $blue;
+    width: 100%;
+}

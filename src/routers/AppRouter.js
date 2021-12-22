@@ -7,7 +7,7 @@ import { AuthRouter } from "./AuthRouter";
 export const AppRouter = () => {
   return (
     <Router>
-      <div>
+      <div className="auth__main">
         <Switch>
           <Route path="/auth/" component={AuthRouter} />
           <Route exact path="/" component={WelcomeScreen} />
