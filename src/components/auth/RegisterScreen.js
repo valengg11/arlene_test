@@ -1,7 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useForm from "../../hooks/useForm";
 
 export const RegisterScreen = () => {
+  const initialForm = {
+    fullname: "",
+    email: "",
+    password: "",
+  };
+  const [values, handleInputChange, reset] = useForm(initialForm);
+  const { fullname, email, password } = values;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(values);
+    // getLogin();
+
+    reset();
+  };
   return (
     <div className="auth__screen">
       <Link to="/" className="auth__link">
@@ -13,13 +29,16 @@ export const RegisterScreen = () => {
         <h1 className="mb-1 title">Create an account</h1>
         <span>Just one step to get started.</span>
       </div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Full name</label>
         <input
           type="text"
           name="fullname"
           className="auth__input"
           autoComplete="off"
+          value={fullname}
+          onChange={handleInputChange}
+          required
         />
         <label>E-mail</label>
         <input
@@ -27,9 +46,19 @@ export const RegisterScreen = () => {
           name="email"
           className="auth__input"
           autoComplete="off"
+          value={email}
+          onChange={handleInputChange}
+          required
         />
         <label>Password</label>
-        <input type="text" name="password" className="auth__input" />
+        <input
+          type="password"
+          name="password"
+          className="auth__input"
+          value={password}
+          onChange={handleInputChange}
+          required
+        />
         <button type="submit" className="btn btn-primary pointer mt-4">
           Log in
         </button>
@@ -45,7 +74,9 @@ export const RegisterScreen = () => {
           </div>
         </div>
       </form>
-      <p className='auth__terms'>By creating an account you agree to the Terms of Service.</p>
+      <p className="auth__terms">
+        By creating an account you agree to the Terms of Service.
+      </p>
     </div>
   );
 };
