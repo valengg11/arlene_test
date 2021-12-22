@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useForm from "../../hooks/useForm";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 export const LoginScreen = () => {
   const initialForm = {
@@ -13,10 +15,26 @@ export const LoginScreen = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(values);
-    // getLogin();
+
+    const userData = {
+      email: email,
+      password: password
+    };
+    axios.post("https://reqres.in/api/login", userData).then((response) => {
+      console.log(response.status);
+      console.log(response.data.token);
+    }).catch((error) => {
+      Swal.fire({
+        title: "Sorry, the data is invalid!",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+      console.log(error);
+    });
 
     reset();
   };
+
   return (
     <div className="auth__screen">
       <Link to="/" className="auth__link">
@@ -29,7 +47,7 @@ export const LoginScreen = () => {
         <span>Welcome back!</span>
       </div>
       <form onSubmit={handleSubmit}>
-        <label>E-mail</label>
+        <label htmlFor="email">E-mail</label>
         <input
           type="text"
           name="email"
@@ -39,7 +57,7 @@ export const LoginScreen = () => {
           onChange={handleInputChange}
           required
         />
-        <label>Password</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           name="password"

@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useForm from "../../hooks/useForm";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 export const RegisterScreen = () => {
   const initialForm = {
@@ -14,7 +16,21 @@ export const RegisterScreen = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(values);
-    // getLogin();
+    const userData = {
+      email: email,
+      password: password,
+    };
+    axios.post("https://reqres.in/api/users", userData).then((response) => {
+      console.log(response.status);
+      console.log(response.data);
+    }).catch((error) => {
+      Swal.fire({
+        title: "Sorry, registration failed!",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+      console.log(error);
+    });
 
     reset();
   };
@@ -30,7 +46,7 @@ export const RegisterScreen = () => {
         <span>Just one step to get started.</span>
       </div>
       <form onSubmit={handleSubmit}>
-        <label>Full name</label>
+        <label htmlFor="fullname">Full name</label>
         <input
           type="text"
           name="fullname"
@@ -40,7 +56,7 @@ export const RegisterScreen = () => {
           onChange={handleInputChange}
           required
         />
-        <label>E-mail</label>
+        <label htmlFor="email">E-mail</label>
         <input
           type="text"
           name="email"
@@ -50,7 +66,7 @@ export const RegisterScreen = () => {
           onChange={handleInputChange}
           required
         />
-        <label>Password</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           name="password"

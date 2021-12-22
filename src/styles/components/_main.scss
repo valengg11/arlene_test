@@ -1,0 +1,27 @@
+.main__screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: white;
+    padding: 30px;
+    border-radius: 20px ;
+}
+
+.main__table {
+    // border-top: 1px solid silver;
+}
+
+.main__table {
+    margin-top: 50px;
+
+    & td {
+        border-top: 1px solid silver;
+        width: 30vw;
+        text-align: center;
+    }
+
+    & img {
+        width: 100px;
+    }
+}
