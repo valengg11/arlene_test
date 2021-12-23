@@ -1,10 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { types } from "../../types/types";
+import { AuthContext } from "../../auth/authContext";
 
 export const LoginScreen = () => {
+  const history = useHistory()
+  const { dispatch } = useContext(AuthContext);
+  let token;
   const initialForm = {
     email: "",
     password: "",
@@ -16,23 +21,42 @@ export const LoginScreen = () => {
     e.preventDefault();
     console.log(values);
 
-    const userData = {
-      email: email,
-      password: password
-    };
-    axios.post("https://reqres.in/api/login", userData).then((response) => {
-      console.log(response.status);
-      console.log(response.data.token);
-    }).catch((error) => {
-      Swal.fire({
-        title: "Sorry, the data is invalid!",
-        icon: "error",
-        confirmButtonText: "Ok",
-      });
-      console.log(error);
-    });
+    handleLogin();
 
     reset();
+  };
+
+  const handleLogin = () => {
+    const userData = {
+      email: email,
+      password: password,
+    };
+    axios
+      .post("https://reqres.in/api/login", userData)
+      .then((response) => {
+        // window.location.href = "/main";
+        console.log(response.status);
+        token = response.data.token;
+        const action = {
+          type: types.login,
+          payload: { token: token },
+        };
+        dispatch(action);
+        history.push('/main')
+        console.log(token);
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Sorry, the data is invalid!",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+        console.log(error);
+      });
+
+    
+
+    
   };
 
   return (

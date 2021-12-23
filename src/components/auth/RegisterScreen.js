@@ -23,6 +23,12 @@ export const RegisterScreen = () => {
     axios.post("https://reqres.in/api/users", userData).then((response) => {
       console.log(response.status);
       console.log(response.data);
+      Swal.fire({
+        title: "The registration was successful!",
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
+      
     }).catch((error) => {
       Swal.fire({
         title: "Sorry, registration failed!",
@@ -76,7 +82,7 @@ export const RegisterScreen = () => {
           required
         />
         <button type="submit" className="btn btn-primary pointer mt-4">
-          Log in
+          Create an account
         </button>
         <div className="auth__social-networks">
           <p>or continue with</p>

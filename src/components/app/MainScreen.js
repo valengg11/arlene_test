@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useHistory } from "react-router-dom";
+import { types } from "../../types/types";
+import { AuthContext } from "../../auth/authContext";
 
 export const MainScreen = () => {
+  const history = useHistory();
+  const { dispatch } = useContext(AuthContext);
   const USERS_URL = "https://reqres.in/api/users/";
   const [users, setUsers] = useState([]);
   const getUsers = async () => {
@@ -23,6 +28,15 @@ export const MainScreen = () => {
   useEffect(() => {
     getUsers();
   }, []);
+
+  const handleLogout = () => {
+    // localStorage.clear();
+    const action = {
+      type: types.logout,
+    };
+    dispatch(action);
+    history.push("/auth/login");
+  };
   return (
     <div className="main__screen">
       <h1>Nice to see you again!</h1>
@@ -42,8 +56,8 @@ export const MainScreen = () => {
           </tbody>
         </table>
       </div>
-      <button className='btn-rounded'>
-        <i class="fas fa-sign-out-alt"></i>
+      <button className="btn-rounded" onClick={handleLogout}>
+        <i className="fas fa-sign-out-alt"></i>
       </button>
     </div>
   );
