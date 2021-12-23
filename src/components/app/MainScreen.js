@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { types } from "../../types/types";
 import { AuthContext } from "../../auth/authContext";
 
-export const MainScreen = () => {
+const MainScreen = () => {
   let navigate = useNavigate();
   const { dispatch } = useContext(AuthContext);
   const USERS_URL = "https://reqres.in/api/users?per_page=12";
@@ -61,3 +61,5 @@ export const MainScreen = () => {
     </div>
   );
 };
+
+export default MainScreen;

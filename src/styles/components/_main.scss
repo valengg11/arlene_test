@@ -6,10 +6,7 @@
     background: white;
     padding: 30px;
     border-radius: 20px ;
-}
-
-.main__table {
-    // border-top: 1px solid silver;
+    text-align: center;
 }
 
 .main__table {
@@ -18,7 +15,6 @@
     & td {
         border-top: 1px solid silver;
         width: 30vw;
-        text-align: center;
     }
 
     & img {

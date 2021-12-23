@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { types } from "../../types/types";
 import { AuthContext } from "../../auth/authContext";
 
-export const LoginScreen = () => {
+const LoginScreen = () => {
   let navigate = useNavigate();
   const { dispatch } = useContext(AuthContext);
   let token;
@@ -41,10 +41,10 @@ export const LoginScreen = () => {
           payload: { token: token },
         };
         dispatch(action);
-        navigate('/main')
+        navigate("/main");
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
         Swal.fire({
           title: `Sorry, the data is invalid!`,
           icon: "error",
@@ -52,10 +52,6 @@ export const LoginScreen = () => {
         });
         console.log(error);
       });
-
-    
-
-    
   };
 
   return (
@@ -107,3 +103,5 @@ export const LoginScreen = () => {
     </div>
   );
 };
+
+export default LoginScreen;

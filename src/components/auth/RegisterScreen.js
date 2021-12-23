@@ -4,7 +4,7 @@ import useForm from "../../hooks/useForm";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-export const RegisterScreen = () => {
+const RegisterScreen = () => {
   let navigate = useNavigate();
   const initialForm = {
     fullname: "",
@@ -21,24 +21,26 @@ export const RegisterScreen = () => {
       email: email,
       password: password,
     };
-    axios.post("https://reqres.in/api/register", userData).then((response) => {
-      console.log(response.status);
-      console.log(response.data);
-      Swal.fire({
-        title: "The registration was successful!",
-        icon: "success",
-        confirmButtonText: "Ok",
+    axios
+      .post("https://reqres.in/api/register", userData)
+      .then((response) => {
+        console.log(response.status);
+        console.log(response.data);
+        Swal.fire({
+          title: "The registration was successful!",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+        navigate("/auth/login");
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Sorry, registration failed!",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+        console.log(error);
       });
-      navigate('/auth/login')
-      
-    }).catch((error) => {
-      Swal.fire({
-        title: "Sorry, registration failed!",
-        icon: "error",
-        confirmButtonText: "Ok",
-      });
-      console.log(error);
-    });
 
     reset();
   };
@@ -104,3 +106,5 @@ export const RegisterScreen = () => {
     </div>
   );
 };
+
+export default RegisterScreen;
