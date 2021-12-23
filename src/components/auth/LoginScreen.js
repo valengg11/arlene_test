@@ -17,7 +17,7 @@ const LoginScreen = () => {
   const [values, handleInputChange, reset] = useForm(initialForm);
   const { email, password } = values;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log(values);
 
@@ -34,7 +34,6 @@ const LoginScreen = () => {
     axios
       .post("https://reqres.in/api/login", userData)
       .then((response) => {
-        console.log(response.status);
         token = response.data.token;
         const action = {
           type: types.login,
