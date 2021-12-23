@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -7,7 +7,7 @@ import { types } from "../../types/types";
 import { AuthContext } from "../../auth/authContext";
 
 export const LoginScreen = () => {
-  const history = useHistory()
+  let navigate = useNavigate();
   const { dispatch } = useContext(AuthContext);
   let token;
   const initialForm = {
@@ -34,7 +34,6 @@ export const LoginScreen = () => {
     axios
       .post("https://reqres.in/api/login", userData)
       .then((response) => {
-        // window.location.href = "/main";
         console.log(response.status);
         token = response.data.token;
         const action = {
@@ -42,12 +41,12 @@ export const LoginScreen = () => {
           payload: { token: token },
         };
         dispatch(action);
-        history.push('/main')
-        console.log(token);
+        navigate('/main')
       })
       .catch((error) => {
+        console.log(error)
         Swal.fire({
-          title: "Sorry, the data is invalid!",
+          title: `Sorry, the data is invalid!`,
           icon: "error",
           confirmButtonText: "Ok",
         });

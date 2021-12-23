@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 export const RegisterScreen = () => {
+  let navigate = useNavigate();
   const initialForm = {
     fullname: "",
     email: "",
@@ -20,7 +21,7 @@ export const RegisterScreen = () => {
       email: email,
       password: password,
     };
-    axios.post("https://reqres.in/api/users", userData).then((response) => {
+    axios.post("https://reqres.in/api/register", userData).then((response) => {
       console.log(response.status);
       console.log(response.data);
       Swal.fire({
@@ -28,6 +29,7 @@ export const RegisterScreen = () => {
         icon: "success",
         confirmButtonText: "Ok",
       });
+      navigate('/auth/login')
       
     }).catch((error) => {
       Swal.fire({

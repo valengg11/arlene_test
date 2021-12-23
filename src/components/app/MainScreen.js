@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { types } from "../../types/types";
 import { AuthContext } from "../../auth/authContext";
 
 export const MainScreen = () => {
-  const history = useHistory();
+  let navigate = useNavigate();
   const { dispatch } = useContext(AuthContext);
-  const USERS_URL = "https://reqres.in/api/users/";
+  const USERS_URL = "https://reqres.in/api/users?per_page=12";
   const [users, setUsers] = useState([]);
   const getUsers = async () => {
     axios
@@ -30,12 +30,11 @@ export const MainScreen = () => {
   }, []);
 
   const handleLogout = () => {
-    // localStorage.clear();
     const action = {
       type: types.logout,
     };
     dispatch(action);
-    history.push("/auth/login");
+    navigate("/auth/login");
   };
   return (
     <div className="main__screen">
