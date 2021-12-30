@@ -6,7 +6,7 @@ export const WelcomeScreen = () => {
     <div className="welcome__box-container">
       <div className="welcome__screen">
         <div className="welcome__screen-container">
-          <img src="images/welcome_image.png" alt="welcome" />
+          <img src="images/welcome_image.PNG" alt="welcome" />
           <h1 className="mb-1 title">Escape the ordinary life</h1>
           <p>
             Discover great experiences around you and make your life
