@@ -49,7 +49,7 @@ const LoginScreen = () => {
           icon: "error",
           confirmButtonText: "Ok",
         });
-        console.log(error);
+        // console.log(error);
       });
   };
 
