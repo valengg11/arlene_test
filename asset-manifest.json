@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/arlene_test/static/css/main.19dd4bbb.css",
-    "main.js": "/arlene_test/static/js/main.adbbfc38.js",
+    "main.js": "/arlene_test/static/js/main.69e1b8db.js",
     "static/js/763.5b6c1dcc.chunk.js": "/arlene_test/static/js/763.5b6c1dcc.chunk.js",
     "static/js/629.bf925b4c.chunk.js": "/arlene_test/static/js/629.bf925b4c.chunk.js",
     "static/js/933.29eed9d9.chunk.js": "/arlene_test/static/js/933.29eed9d9.chunk.js",
@@ -9,7 +9,7 @@
     "static/js/105.789391a4.chunk.js": "/arlene_test/static/js/105.789391a4.chunk.js",
     "index.html": "/arlene_test/index.html",
     "main.19dd4bbb.css.map": "/arlene_test/static/css/main.19dd4bbb.css.map",
-    "main.adbbfc38.js.map": "/arlene_test/static/js/main.adbbfc38.js.map",
+    "main.69e1b8db.js.map": "/arlene_test/static/js/main.69e1b8db.js.map",
     "763.5b6c1dcc.chunk.js.map": "/arlene_test/static/js/763.5b6c1dcc.chunk.js.map",
     "629.bf925b4c.chunk.js.map": "/arlene_test/static/js/629.bf925b4c.chunk.js.map",
     "933.29eed9d9.chunk.js.map": "/arlene_test/static/js/933.29eed9d9.chunk.js.map",
@@ -18,6 +18,6 @@
   },
   "entrypoints": [
     "static/css/main.19dd4bbb.css",
-    "static/js/main.adbbfc38.js"
+    "static/js/main.69e1b8db.js"
   ]
 }
