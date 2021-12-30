@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 const LoginScreen = React.lazy(() => 
 import("../components/auth/LoginScreen")
 );
@@ -28,7 +28,6 @@ export const AuthRouter = () => {
               </React.Suspense>
             }
           />
-          <Route path="/*" element={<Navigate to="auth/register" />} />
         </Routes>
       </div>
     </div>
