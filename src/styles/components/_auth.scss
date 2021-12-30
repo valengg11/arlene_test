@@ -129,3 +129,12 @@
 .auth__terms {
     font-weight: 200;
 }
+
+.auth__form {
+    opacity: 1;
+    transition: opacity 1s linear;
+}
+
+.disappear {
+    opacity: 0;  
+}

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useForm from "../../hooks/useForm";
 import axios from "axios";
@@ -7,8 +7,10 @@ import { types } from "../../types/types";
 import { AuthContext } from "../../auth/authContext";
 
 const LoginScreen = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const { dispatch } = useContext(AuthContext);
+  const button = useRef(null);
+  const form = useRef(null);
   let token;
   const initialForm = {
     email: "",
@@ -22,8 +24,10 @@ const LoginScreen = () => {
     console.log(values);
 
     handleLogin();
+  };
 
-    reset();
+  const navigateMain = () => {
+    navigate("/main");
   };
 
   const handleLogin = () => {
@@ -31,6 +35,8 @@ const LoginScreen = () => {
       email: email,
       password: password,
     };
+    button.current.innerHTML = "Loading";
+    button.current.disabled = true;
     axios
       .post("https://reqres.in/api/login", userData)
       .then((response) => {
@@ -40,16 +46,19 @@ const LoginScreen = () => {
           payload: { token: token },
         };
         dispatch(action);
-        navigate("/main");
+        reset();
+        form.current.classList.add("disappear");
+        setTimeout(navigateMain, 2000);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
+        button.current.innerHTML = "Log in";
+        button.current.disabled = false;
         Swal.fire({
           title: `Sorry, the data is invalid!`,
           icon: "error",
           confirmButtonText: "Ok",
         });
-        // console.log(error);
       });
   };
 
@@ -64,7 +73,7 @@ const LoginScreen = () => {
         <h1 className="mb-1 title">Log in</h1>
         <span>Welcome back!</span>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} ref={form} className="auth__form">
         <label htmlFor="email">E-mail</label>
         <input
           type="text"
@@ -84,7 +93,11 @@ const LoginScreen = () => {
           onChange={handleInputChange}
           required
         />
-        <button type="submit" className="btn btn-primary pointer mt-4">
+        <button
+          ref={button}
+          type="submit"
+          className="btn btn-primary pointer mt-4"
+        >
           Log in
         </button>
         <div className="auth__social-networks">
